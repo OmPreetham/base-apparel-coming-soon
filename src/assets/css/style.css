@@ -30,7 +30,7 @@
 
   /* Gradients */
 
-  --linear-one: 135deg, hsl(0, 0%, 100%), hsl(0, 100%, 98%);
+  --linear-one: 135deg, hsl(0, 63%, 95%), hsl(0, 83%, 88%);
 
   --linear-two: 135deg, hsl(0, 80%, 86%), hsl(0, 74%, 74%);
 }
@@ -125,9 +125,10 @@ main {
 }
 
 .header-wrapper {
-  display: block;
-  margin-right: auto;
-  max-width: 56%;
+  position: absolute;
+  padding-block: 4em;
+  padding-inline: 1em;
+  min-width: 56%;
 }
 
 .header-wrapper header {
@@ -225,6 +226,12 @@ form {
   position: relative;
 }
 
+.error {
+  position: absolute;
+  top: 25%;
+  right: 27%;
+}
+
 button {
   position: absolute;
   right: 0;
@@ -263,17 +270,20 @@ input::placeholder {
 input:focus + button,
 input:active + button {
   outline: none;
-  scale: 1.1;
+  scale: 1.05;
+  background: linear-gradient(var(--linear-one));
+  box-shadow: 0 0 40px hsl(0, 28%, 69%);
 }
 
 input:focus,
 input:active {
-  outline: none;
+  outline: 1px solid var(--primary-soft-red);
+  border: 1px solid var(--primary-soft-red);
 }
 
 .form-wrapper p {
   margin-top: 0.5rem;
-  margin-left: 2rem;
+  margin-left: 7%;
   color: var(--primary-desaturated-red);
 }
 
@@ -289,7 +299,33 @@ section {
   background-position: center center;
 }
 
-@media screen and (max-width: 750px) {
+/* Animations */
+
+@keyframes popEnlargeFromBottom {
+  0% {
+    transform: scaleY(0) scaleX(0);
+    transform-origin: bottom;
+    opacity: 0;
+  }
+  50% {
+    transform: scaleY(1.2) scaleX(1.2);
+  }
+  100% {
+    transform: scaleY(1) scaleX(1);
+    opacity: 1;
+  }
+}
+
+.coming-soon-layout,
+input:focus + button,
+input:active + button {
+  animation: popEnlargeFromBottom 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)
+    forwards;
+}
+
+/* Media Queries */
+
+@media screen and (max-width: 700px) {
   .wrapper {
     display: flex;
     flex-direction: column;
@@ -298,6 +334,10 @@ section {
   }
 
   .header-wrapper {
+    position: static;
+
+    display: block;
+    width: 100%;
     padding: 2em;
   }
 
@@ -313,6 +353,7 @@ section {
   }
 
   .title-wrapper {
+    margin-top: 2rem;
     align-items: center;
   }
 
@@ -332,5 +373,8 @@ section {
 
   form {
     width: 100%;
+  }
+  .form-wrapper p {
+    text-align: left;
   }
 }
