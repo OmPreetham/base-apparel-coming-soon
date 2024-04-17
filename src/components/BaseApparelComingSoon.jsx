@@ -37,7 +37,7 @@ const BaseApparelComingSoon = () => {
       <div className="header-wrapper">
         <header>
           <h1>Base Apparel</h1>
-          <img src="/images/logo.svg" alt="Base Apparel" />
+          <img src="images/logo.svg" alt="Base Apparel" />
         </header>
       </div>
       <main>
@@ -74,12 +74,12 @@ const BaseApparelComingSoon = () => {
                         placeholder="Email Address"
                       />
                       <button type="submit">
-                        <img src="/images/icon-arrow.svg" alt="Arrow Icon" />
+                        <img src="images/icon-arrow.svg" alt="Arrow Icon" />
                       </button>
                       {error && (
                         <img
                           className="error"
-                          src="/images/icon-error.svg"
+                          src="images/icon-error.svg"
                           alt="Error Icon"
                         />
                       )}
